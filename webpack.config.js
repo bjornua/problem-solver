@@ -16,7 +16,7 @@ const config = {
   },
   module: {
     rules: [
-      {test: /\.(js|jsx)$/, use: 'babel-loader'},
+      {test: /\.(js|jsx)$/, use: 'babel-loader?presets[]=es2015'},
     ],
   },
 };
