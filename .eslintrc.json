@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended", "google"],
+  "installedESLint": true,
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "require-jsdoc": "off"
+  },
+  "plugins": [
+    "react"
+  ]
+}
