@@ -1,12 +1,13 @@
 /* global __dirname require module */
 const path = require('path');
+const webpack = require('webpack');
 
 const config = {
   entry: './src/browser.js',
   output: {
     path: path.resolve(__dirname, 'docs'),
     filename: 'script.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'var',
     library: 'ProblemSolver',
   },
   devServer: {
@@ -16,9 +17,14 @@ const config = {
   },
   module: {
     rules: [
-      {test: /\.(js|jsx)$/, use: 'babel-loader?presets[]=es2015'},
+      {test: /\.(js|jsx)$/, use: 'babel-loader'},
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      TARGET: JSON.stringify('web'),
+    }),
+  ],
 };
 
 module.exports = config;
