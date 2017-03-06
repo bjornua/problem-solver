@@ -1,40 +1,48 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import styled from 'styled-components';
-import {setInterval} from '../std';
 
 
-const Wrapper = styled.div`
-  margin: 4em auto;
-  font-family: sans;
-  font-size: 20pt;
-  max-width:20em;
-  padding: 1em;
-  background-color: hsl(0, 30%, 80%);
-  text-align: center;
+const Window = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: auto;
+  overflow-y: scroll;
+  background: magenta;
+`;
+
+const Body = styled.div`
+  background: green;
 `;
 
 class Main extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      counter: 0,
-    };
-    this.tick = this.tick.bind(this);
   }
-  tick() {
-    this.setState(({counter}) => ({
-      counter: counter + 1,
-    }));
-  }
-  componentDidMount() {
-    setInterval(this.tick, 10);
-  }
+
   render() {
-    const {counter} = this.state;
-    return <Wrapper>
-      sin({(counter*0.01).toFixed(2)}) = {Math.sin(counter*0.01).toFixed(1)}
-    </Wrapper>;
+    let elements = [];
+
+    for(let i = 0; i < 100; i += 1) {
+      elements.push(
+        <h1>Element {i}</h1>
+      );
+    }
+
+
+    return (
+      <Window>
+        <Body>
+          {elements}
+        </Body>
+      </Window>
+    );
   }
 }
+Main.propTypes = {
+  speed: PropTypes.number.isRequired,
+};
 
 export default Main;
