@@ -25,6 +25,7 @@ const config = {
       TARGET: JSON.stringify('web'),
     }),
   ],
+  devtool: 'source-map',
 };
 
 module.exports = config;

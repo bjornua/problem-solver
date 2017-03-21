@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './components/main';
+import StatefulMain from './statefulMain';
+
+Error.stackTraceLimit = 1000;
 
 export function main(window, targetElement) {
   ReactDOM.render(
-    <Main speed={0.1} />, targetElement
+    <StatefulMain />, targetElement
   );
 }

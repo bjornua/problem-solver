@@ -1,48 +1,22 @@
 import React, {PropTypes} from 'react';
-import styled from 'styled-components';
-
-
-const Window = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-x: auto;
-  overflow-y: scroll;
-  background: magenta;
-`;
-
-const Body = styled.div`
-  background: green;
-`;
+import Question from './question';
 
 class Main extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    let elements = [];
-
-    for(let i = 0; i < 100; i += 1) {
-      elements.push(
-        <h1>Element {i}</h1>
-      );
-    }
-
-
-    return (
-      <Window>
-        <Body>
-          {elements}
-        </Body>
-      </Window>
-    );
+    const {data, onCurrentSubmit, onCurrentUpdate} = this.props;
+    return <Question
+      problems={data.get('problems')}
+      value={data.get('current')}
+      onCurrentSubmit={onCurrentSubmit}
+      onCurrentUpdate={onCurrentUpdate}
+    />;
   }
 }
 Main.propTypes = {
-  speed: PropTypes.number.isRequired,
+  data: PropTypes.any,
+  onCurrentSubmit: PropTypes.any,
+  onCurrentUpdate: PropTypes.any,
 };
+
 
 export default Main;
